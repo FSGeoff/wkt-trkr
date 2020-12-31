@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/FSGeoff/wkt-trkr/issues"
   },
-  "homepage": "https://github.com/FSGeoff/wkt-trkr#readme"
+  "homepage": "https://github.com/FSGeoff/wkt-trkr#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.9",
+    "morgan": "^1.10.0"
+  }
 }
