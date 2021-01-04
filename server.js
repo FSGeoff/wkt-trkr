@@ -34,7 +34,7 @@ connection.on("error", (err) => {
 });
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "/views/index.html"));
+	res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 app.get("/api/config", (req, res) => {
@@ -62,5 +62,5 @@ app.post("api/workout", (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log(`App running on port ${PORT}!`);
+	console.log(`App running on port http://localhost:${PORT}`);
 });
