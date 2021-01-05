@@ -14,7 +14,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static("./public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 	useNewUrlParser: true,
@@ -33,9 +33,7 @@ connection.on("error", (err) => {
 	console.log("Mongoose connection error: " + err);
 });
 
-app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "/public/index.html"));
-});
+
 
 app.get("/api/config", (req, res) => {
 	res.json({
@@ -43,23 +41,28 @@ app.get("/api/config", (req, res) => {
 	});
 });
 
-app.get("api/workout", (req, res) => {
+app.get("api/workouts", (req, res) => {
 	db.Workout.find().then((foundWorkout) => {
 		res.json(foundWorkout);
 	});
 });
 
-app.get("api/workout/:id", (req, res) => {
+app.get("api/workouts/:id", (req, res) => {
 	db.Workout.findById(req.params.id).then((foundWorkout) => {
 		res.json(foundWorkout);
 	});
 });
 
-app.post("api/workout", (req, res) => {
+app.post("api/workouts", (req, res) => {
 	db.Workout.create(req.body).then((newWorkout) => {
 		res.json(newWorkout);
 	});
 });
+const backEndRoutes = require("./controller/apiRoutes.js");
+const frontEndRoutes = require("./controller/views.js");
+
+app.use(backEndRoutes);
+app.use(frontEndRoutes);
 
 app.listen(PORT, () => {
 	console.log(`App running on port http://localhost:${PORT}`);
