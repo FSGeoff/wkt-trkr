@@ -33,27 +33,25 @@ connection.on("error", (err) => {
 	console.log("Mongoose connection error: " + err);
 });
 
-
-
 app.get("/api/config", (req, res) => {
 	res.json({
 		success: true,
 	});
 });
 
-app.get("api/workouts", (req, res) => {
+app.get("/api/workouts", (req, res) => {
 	db.Workout.find().then((foundWorkout) => {
 		res.json(foundWorkout);
 	});
 });
 
-app.get("api/workouts/:id", (req, res) => {
+app.get("/api/workouts/:id", (req, res) => {
 	db.Workout.findById(req.params.id).then((foundWorkout) => {
 		res.json(foundWorkout);
 	});
 });
 
-app.post("api/workouts", (req, res) => {
+app.post("/api/workouts", (req, res) => {
 	db.Workout.create(req.body).then((newWorkout) => {
 		res.json(newWorkout);
 	});

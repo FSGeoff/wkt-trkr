@@ -14,5 +14,6 @@ As a user, I want to be able to view create and track daily workouts. I want to 
 - `express`
 - `mongoose`
 - `morgan`
+- `nodemon`
 
 ## Demo
