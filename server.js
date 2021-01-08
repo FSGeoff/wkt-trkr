@@ -39,36 +39,6 @@ app.get("/api/config", (req, res) => {
 	});
 });
 
-// app.get("/api/workouts", (req, res) => {
-// 	db.Workout.find({}, (err, foundWorkout) => {
-// 		if (err) {
-// 			console.log(err);
-// 		} else {
-// 			console.log(foundWorkout);
-// 			res.json(foundWorkout);
-// 		}
-// 	});
-// });
-app.get("/api/workouts/:id", (req, res) => {
-	db.Workout.findByIdAndUpdate(
-		{ _id: req.params.id },
-		{ $push: { exercises: req.body } },
-		(err, foundWorkout) => {
-			if (err) {
-				console.log(err);
-			} else {
-				console.log(foundWorkout);
-				res.json(foundWorkout);
-			}
-		}
-	);
-});
-
-app.post("/api/workouts", (req, res) => {
-	db.Workout.create(req.body).then((newWorkout) => {
-		res.json(newWorkout);
-	});
-});
 const backEndRoutes = require("./controller/apiRoutes");
 const frontEndRoutes = require("./controller/views.js");
 
