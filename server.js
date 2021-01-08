@@ -39,16 +39,16 @@ app.get("/api/config", (req, res) => {
 	});
 });
 
-app.get("/api/workouts", (req, res) => {
-	db.Workout.find({}, (err, foundWorkout) => {
-		if (err) {
-			console.log(err);
-		} else {
-			console.log(foundWorkout);
-			res.json(foundWorkout);
-		}
-	});
-});
+// app.get("/api/workouts", (req, res) => {
+// 	db.Workout.find({}, (err, foundWorkout) => {
+// 		if (err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(foundWorkout);
+// 			res.json(foundWorkout);
+// 		}
+// 	});
+// });
 app.get("/api/workouts/:id", (req, res) => {
 	db.Workout.findByIdAndUpdate(
 		{ _id: req.params.id },
@@ -62,7 +62,6 @@ app.get("/api/workouts/:id", (req, res) => {
 			}
 		}
 	);
-	
 });
 
 app.post("/api/workouts", (req, res) => {

@@ -1,19 +1,19 @@
 const express = require("express");
-const db = require("../models/workout");
+const db = require("../models");
 const path = require("path");
-const router = express.Router();
+const router = require("express").Router();
 
-// router.get("/api/workouts", (req, res) => {
-// 	db.Workout.find({}, (err, foundWorkout) => {
-// 		if (err) {
-// 			console.log(err);
-// 		} else {
-// 			console.log(foundWorkout);
-// 			res.json(foundWorkout);
-// 		}
-// 	});
+router.get("/api/workouts", (req, res) => {
+	db.Workout.find({}, (err, foundWorkout) => {
+		if (err) {
+			console.log(err);
+		} else {
+			console.log(foundWorkout);
+			res.json(foundWorkout);
+		}
+	});
 
-// });
+});
 
 router.post("/api/workouts", (req, res) => {
 	db.Workout.create(req.body).then((newWorkout) => {
